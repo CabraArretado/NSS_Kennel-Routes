@@ -19,7 +19,7 @@ const AnimalList = () => {
     // Delete function. No return
     const deleteAnimal = async (id) => {
         await AnimalManager.delete(id)
-        let renderAgain = await AnimalManager.getAll().then(animalAPI => setAnimals(animalAPI))
+        await AnimalManager.getAll().then(animalAPI => setAnimals(animalAPI))
     }
 
     // got the animals from the API on the component's first render

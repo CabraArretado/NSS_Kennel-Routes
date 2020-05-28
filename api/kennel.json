@@ -5,19 +5,30 @@
       "name": "Doodles",
       "breed": "Poodle",
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Full_attention_%288067543690%29.jpg/1200px-Full_attention_%288067543690%29.jpg"
-    },
-    {
+  },
+  {
+      "id": 2,
+      "name": "Decker",
+      "breed": "German Shepherd",
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/German-shepherd-4055031920.jpg/1280px-German-shepherd-4055031920.jpg"
+  },
+  {
       "id": 3,
       "name": "Esme",
       "breed": "Pitbull",
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Bel_Air%2C_Maryland_dog_%28Unsplash%29.jpg/1200px-Bel_Air%2C_Maryland_dog_%28Unsplash%29.jpg"
-    }
+  }
   ],
   "locations": [
     {
       "id": 1,
       "name": "South Store",
-      "adress": "South Ave 1010101010"
+      "address": "South Ave 1010101010"
+    },
+    {
+      "id": 2,
+      "name": "Super Store",
+      "address": "Super Ave 1010"
     }
   ],
   "employees": [

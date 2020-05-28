@@ -1,14 +1,15 @@
-const remoteURL = "http://localhost:5002"
+const remoteURL = "http://localhost:5002/animals"
 
 export default {
   get(id) {
-    return fetch(`${remoteURL}/animals/${id}`).then(result => result.json())
+    console.log("works")
+    return fetch(`${remoteURL}/${id}`).then(result => result.json())
   },
   getAll() {
-    return fetch(`${remoteURL}/animals`).then(result => result.json())
+    return fetch(`${remoteURL}`).then(result => result.json())
   },
   delete(id) {
-    return fetch(`${remoteURL}/animals/${id}`, {
+    return fetch(`${remoteURL}/${id}`, {
       method: "DELETE",
       headers: { 'Content-Type': 'application/json' }
     }).then(data => data.json())

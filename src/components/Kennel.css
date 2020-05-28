@@ -59,3 +59,8 @@ img {
   max-width: 300px;
   max-height: auto;
 }
+
+.card {
+  max-width: 400px;
+  margin: 10px auto;
+}
