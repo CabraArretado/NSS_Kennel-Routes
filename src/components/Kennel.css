@@ -54,3 +54,8 @@ img {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.pictoreDog {
+  max-width: 300px;
+  max-height: auto;
+}

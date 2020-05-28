@@ -10,6 +10,7 @@ const OwnerCard = (props) => {
         </h3>
         <p>Age: { owner.age}</p>
       </div>
+      <button type="button" onClick={() => {props.delete(owner.id)}}>Leaving Owner</button>
     </div>
   );
 };

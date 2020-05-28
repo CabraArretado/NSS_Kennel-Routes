@@ -12,6 +12,7 @@ const AnimalCard = (props) => {
         </h3>
       <p>Breed: {props.animal.breed}</p>
       </div>
+      <button type="button" onClick={() => {props.delete(props.animal.id)}}>Delete Animal</button>
     </div>
   );
 };

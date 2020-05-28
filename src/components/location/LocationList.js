@@ -10,8 +10,13 @@ const LocationList = () => {
 
     useEffect(()=> {getLocation()}, [])
 
+    const deleteLocation = async (id) => {
+        await LocationManager.delete(id)
+        await getLocation()
+    }
+
     return <div>
-        { locations.map(location => <LocationCard key={location.id} location={location}/>) }
+        { locations.map(location => <LocationCard key={location.id} location={location} delete={deleteLocation}/>) }
     </div>
 }
 

@@ -9,10 +9,16 @@ const OwnerList = () => {
 
     const getOwners = () => OwnerManager.getAll().then(ownersAPI => setOwners(ownersAPI))
 
+    const deleteOwner = async (id) => {
+        await OwnerManager.delete(id)
+        await getOwners()
+    }
+    
+
     useEffect(() => {getOwners()}, [])
 
     return <div>
-        {owners.map(owner => <OwnerCard key={owner.id} owners={owner}/>)}
+        {owners.map(owner => <OwnerCard delete={deleteOwner} key={owner.id} owners={owner}/>)}
     </div>
 }
 
