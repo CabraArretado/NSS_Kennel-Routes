@@ -2,6 +2,7 @@ const remoteURL = "http://localhost:5002/locations"
 
 export default {
   get(id) {
+    console.log("get works!")
     return fetch(`${remoteURL}/${id}`).then(result => result.json())
   },
   getAll() {
