@@ -38,7 +38,7 @@ const AnimalList = (props) => {
             <button type="button" className="btn" onClick={() => { props.history.push("/animals/new") }}>Admit Animal</button>
         </section>
         <div className="container-cards">
-            {animals.map(animal => <AnimalCard key={animal.id} delete={deleteAnimal} animal={animal} />)}
+            {animals.map(animal => <AnimalCard key={animal.id} delete={deleteAnimal} animal={animal} {...props}/>)}
         </div>
     </>
     );

@@ -3,35 +3,44 @@ import React, { useState, useEffect } from 'react';
 import AnimalManager from '../../modules/AnimalManager';
 import EmployeeManager from '../../modules/EmployeeManager';
 
-const AnimalForm = props => {
-    const [animal, setAnimal] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
-    const [employees, setEmployees] = useState([]);
+const AnimalEditForm = (props) => {
 
-    const handleFieldChange = evt => {
-        const stateToChange = { ...animal };
-        stateToChange[evt.target.id] = evt.target.value;
-        setAnimal(stateToChange);
-    };
+    let [animal, setAnimal] = useState({"name":"", "breed":"", "employeeId":""})
+    let [isLoading, setIsLoading] = useState(false);
+    let [employees, setEmployees] = useState([]);
+
+
+    const getAnimal = (id) => {
+        return AnimalManager.get(id).then(data => setAnimal(data))
+    }
+
+    const handleFieldChange = (evt) => {
+        let stateOfChange = { ...animal };
+        stateOfChange[evt.target.id] = evt.target.value;
+        setAnimal(stateOfChange);
+    }
 
     const getEmployees = () => {
         return EmployeeManager.get().then(data => setEmployees(data))
     }
 
-    useEffect(() => {getEmployees()}, [])
-
-    /*  Local method for validation, set loadingStatus, create animal      object, invoke the AnimalManager post method, and redirect to the full animal list
-    */
-    const constructNewAnimal = evt => {
+    const upadteAnimal = evt => {
         evt.preventDefault();
+        console.log(animal)
         if (!animal.name || !animal.breed || !animal.employeeId) {
             window.alert("Please input an animal name and breed");
         } else {
             setIsLoading(true);
-            // Create the animal and redirect user to animal list
-            AnimalManager.post(animal).then(() => props.history.push("/animals"));
+            AnimalManager.put(props.animalId, animal).then(() => props.history.push("/animals"));
         }
     };
+
+    useEffect(() => {
+        getAnimal(props.animalId)
+        .then((data) => setIsLoading(false))}
+        , [])
+    useEffect(() => { getEmployees() }, [])
+
 
     return (
         <>
@@ -44,6 +53,7 @@ const AnimalForm = props => {
                             onChange={handleFieldChange}
                             id="name"
                             placeholder="Animal name"
+                            value={animal.name}
                         />
                         <label htmlFor="name">Name</label>
                         <input
@@ -52,20 +62,21 @@ const AnimalForm = props => {
                             onChange={handleFieldChange}
                             id="breed"
                             placeholder="Breed"
+                            value={animal.breed}
                         />
                         <label htmlFor="breed">Breed</label>
                     </div>
                     <div>
                         <select id="employeeId" onChange={handleFieldChange}>
-                        <option>Select carer</option>
-                            {employees.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}
+                            <option>Select carer</option>
+                            {employees.map(e => <option key={e.id} value={e.id} >{e.name}</option>)}
                         </select>
                     </div>
                     <div className="alignRight">
                         <button
                             type="button"
                             disabled={isLoading}
-                            onClick={constructNewAnimal}
+                            onClick={upadteAnimal}
                         >Submit</button>
                     </div>
                 </fieldset>
@@ -74,4 +85,4 @@ const AnimalForm = props => {
     );
 };
 
-export default AnimalForm
+export default AnimalEditForm

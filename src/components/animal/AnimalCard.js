@@ -19,6 +19,7 @@ const AnimalCard = (props) => {
       </div>
       <button type="button" onClick={() => { props.delete(props.animal.id) }}>Put to sleep</button>
       <Link to={`/animals/${props.animal.id}`}><button>Details</button></Link>
+      <button type="button" onClick={() => { props.history.push(`/animals/edit/${props.animal.id}`)}}>Edit</button>
     </div>
   );
 };

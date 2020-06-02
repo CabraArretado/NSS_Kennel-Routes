@@ -5,6 +5,7 @@ import Home from "./home/Home";
 import AnimalList from "./animal/AnimalList";
 import AnimalDetail from "./animal/AnimalDetail";
 import AnimalForm from "./animal/AnimalForm";
+import AnimalEditForm from "./animal/AnimalEditForm";
 import LocationList from "./location/LocationList";
 import LocationDetail from "./location/LocationDetail";
 import EmployeeList from "./employees/EmployeeList";
@@ -57,6 +58,11 @@ const ApplicationViews = () => {
                 path="/animals/:animalId(\d+)"
                 render={(props) => {
                     return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+                }} />
+            <Route
+                path="/animals/edit/:animalId(\d+)"
+                render={(props) => {
+                    return <AnimalEditForm animalId={parseInt(props.match.params.animalId)} {...props} />
                 }} />
             <Route
                 path="/locations/:locationId(\d+)"

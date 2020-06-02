@@ -25,5 +25,14 @@ export default {
 },
   getExpanded(otherList){
     return fetch(`${remoteURL}?_expand=${otherList.toLowerCase()}`).then(result => result.json())
+  },
+  put(id, newObj) {
+    return fetch(`${remoteURL}/${id}`, {
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObj)
+  }).then(data => data.json())
   }
 }
