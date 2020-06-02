@@ -7,7 +7,7 @@ const EmployeeList = () => {
     let [employees, setEmployees] = useState([]);
 
     const getEmployees = () => {
-        return  EmployeeManager.getAll().then(employeesAPI => setEmployees(employeesAPI))
+        return  EmployeeManager.get().then(employeesAPI => setEmployees(employeesAPI))
     }
 
     let deleteEmployee = async (id) => {

@@ -3,17 +3,22 @@ import React, { useState, useEffect } from 'react';
 import AnimalCard from './AnimalCard';
 import AnimalManager from '../../modules/AnimalManager';
 
-const AnimalList = () => {
+const AnimalList = (props) => {
     // The initial state is an empty array
     const [animals, setAnimals] = useState([]);
 
     const getAnimals = () => {
         // After the data comes back from the API, we
         //  use the setAnimals function to update state
-        return AnimalManager.getAll().then(animalsFromAPI => {
+        return AnimalManager.getExpanded("employee").then(animalsFromAPI => {
             setAnimals(animalsFromAPI)
         });
     };
+
+    // const getEmployee = async(id) => {
+    //     let name =  await EmployeeManager.getOne(id)
+    //     return name
+    // }
 
 
     // Delete function. No return
@@ -28,10 +33,14 @@ const AnimalList = () => {
     }, []);
 
     // Finally we use map() to "loop over" the animals array to show a list of animal cards
-    return (
+    return (<>
+        <section className="section-content">
+            <button type="button" className="btn" onClick={() => { props.history.push("/animals/new") }}>Admit Animal</button>
+        </section>
         <div className="container-cards">
             {animals.map(animal => <AnimalCard key={animal.id} delete={deleteAnimal} animal={animal} />)}
         </div>
+    </>
     );
 };
 export default AnimalList
