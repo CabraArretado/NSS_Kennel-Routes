@@ -16,23 +16,32 @@ export default {
   },
   post(newData) {
     return fetch(`${remoteURL}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newData)
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newData)
     }).then(data => data.json())
-},
-  getExpanded(otherList){
+  },
+  getExpanded(otherList) {
     return fetch(`${remoteURL}?_expand=${otherList.toLowerCase()}`).then(result => result.json())
   },
   put(id, newObj) {
     return fetch(`${remoteURL}/${id}`, {
       method: "PUT",
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(newObj)
-  }).then(data => data.json())
+    }).then(data => data.json())
+  },
+  getRandomId() {
+    return fetch(`${remoteURL}`)
+      .then(result => result.json())
+      .then(animals => {
+        const randomIndex = Math.floor(Math.random() * animals.length);
+        const randomAnimal = animals[randomIndex];
+        return randomAnimal.id;
+      });
   }
 }

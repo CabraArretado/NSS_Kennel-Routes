@@ -5,7 +5,7 @@ import EmployeeManager from '../../modules/EmployeeManager';
 
 const AnimalEditForm = (props) => {
 
-    let [animal, setAnimal] = useState({"name":"", "breed":"", "employeeId":""})
+    let [animal, setAnimal] = useState({"name":"", "animalId":"", "breed":"", "employeeId":""})
     let [isLoading, setIsLoading] = useState(false);
     let [employees, setEmployees] = useState([]);
 
@@ -37,8 +37,8 @@ const AnimalEditForm = (props) => {
 
     useEffect(() => {
         getAnimal(props.animalId)
-        .then((data) => setIsLoading(false))}
-        , [])
+        .then((data) => setIsLoading(false))}, [props.animalId])
+
     useEffect(() => { getEmployees() }, [])
 
 

@@ -8,6 +8,7 @@ import AnimalForm from "./animal/AnimalForm";
 import AnimalEditForm from "./animal/AnimalEditForm";
 import LocationList from "./location/LocationList";
 import LocationDetail from "./location/LocationDetail";
+import LocationForm from "./location/LocationForm";
 import EmployeeList from "./employees/EmployeeList";
 import OwnerList from "./owner/OwnerList";
 import Login from "./auth/Login";
@@ -71,6 +72,9 @@ const ApplicationViews = () => {
                 }} />
             <Route path="/animals/new" render={(props) => {
                 return <AnimalForm {...props} />
+            }} />
+            <Route path="/locations/new" render={(props) => {
+                return <LocationForm {...props} />
             }} />
             <Route path="/login" component={Login} />
         </React.Fragment>
