@@ -17,7 +17,7 @@ const AnimalSpotlight = props => {
         <div className="animal-spotlight">
             <img src={require('./dog.svg')} alt="My Dog" />
             <div>
-                <img></img>
+                <img alt=""></img>
                 <h3>{animal.name}</h3>
                 <p>{animal.breed}</p>
             </div>

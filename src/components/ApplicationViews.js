@@ -10,6 +10,7 @@ import LocationList from "./location/LocationList";
 import LocationDetail from "./location/LocationDetail";
 import LocationForm from "./location/LocationForm";
 import EmployeeList from "./employees/EmployeeList";
+import EmployeeDetail from "./employees/EmployeeDetails";
 import OwnerList from "./owner/OwnerList";
 import Login from "./auth/Login";
 
@@ -59,6 +60,11 @@ const ApplicationViews = () => {
                 path="/animals/:animalId(\d+)"
                 render={(props) => {
                     return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+                }} />
+                        <Route
+                path="/employees/:employeeId(\d+)"
+                render={(props) => {
+                    return <EmployeeDetail employeeId={parseInt(props.match.params.employeeId)} {...props} />
                 }} />
             <Route
                 path="/animals/edit/:animalId(\d+)"

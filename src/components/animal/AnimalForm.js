@@ -30,6 +30,7 @@ const AnimalForm = props => {
         } else {
             setIsLoading(true);
             // Create the animal and redirect user to animal list
+            animal.employeeId = parseInt(animal.employeeId)
             AnimalManager.post(animal).then(() => props.history.push("/animals"));
         }
     };

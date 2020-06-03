@@ -15,12 +15,6 @@ const AnimalList = (props) => {
         });
     };
 
-    // const getEmployee = async(id) => {
-    //     let name =  await EmployeeManager.getOne(id)
-    //     return name
-    // }
-
-
     // Delete function. No return
     const deleteAnimal = async (id) => {
         await AnimalManager.delete(id)
